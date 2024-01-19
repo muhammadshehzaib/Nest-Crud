@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { ContactModule } from './contact/contact.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [ContactModule,ConfigModule.forRoot({
@@ -11,7 +13,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     isGlobal:true,
   }),
   ContactModule,
-  MongooseModule.forRoot(process.env.DBURI)
+  MongooseModule.forRoot(process.env.DBURI),
+  AuthModule,
+  UsersModule
 ],
   
   controllers: [AppController],
