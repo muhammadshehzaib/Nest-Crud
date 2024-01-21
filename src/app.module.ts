@@ -13,7 +13,7 @@ import { UsersModule } from './users/users.module';
     isGlobal:true,
   }),
   ContactModule,
-  MongooseModule.forRoot(process.env.DBURI),
+  MongooseModule.forRoot(process.env.DBURI,),
   AuthModule,
   UsersModule
 ],
