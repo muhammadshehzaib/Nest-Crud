@@ -10,6 +10,7 @@ import { User  } from './schemas/user.schema';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: mongoose.Model<User>) {}
 
+
   async create(username:string,email:string,password:string): Promise<User> {
     const user = new this.userModel({ username,email, password, });
     return user.save();

@@ -1,10 +1,16 @@
-import { Category } from "../schemas/contact.schema"
+import { ApiProperty } from "@nestjs/swagger"
 
 export class CreateContactDto{
-    readonly title:string
-    readonly description:string
-    readonly author:string
-    readonly price:number
-    readonly category:Category
+    @ApiProperty({
+        description:"Name",
+        example:"shehzaib",
+    })
+    readonly name:string
+
+    @ApiProperty({
+        description:"Contact No",
+        example:"03059540083",
+    })
+    readonly contactNo:string
 }
 

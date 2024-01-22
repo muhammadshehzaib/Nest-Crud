@@ -3,18 +3,24 @@ import { ContactService } from './contact.service';
 import { Contact } from './schemas/contact.schema';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
+import { ApiBadRequestResponse, ApiCreatedResponse } from '@nestjs/swagger';
 
 @Controller('contacts')
 export class ContactController {
     constructor(private contactService:ContactService){}
-
-
     @Get()
     async getAllContacts():Promise<Contact[]>{
         return this.contactService.findAll()
     }
 
      @Post()
+     @ApiCreatedResponse({
+        description:"Created Contact Object as response",
+        type:Contact
+     })
+     @ApiBadRequestResponse({       
+        description:"Contact Cannot Created"
+    })
     async createContacts(
     @Body()
     contact:CreateContactDto,
